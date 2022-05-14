@@ -4,7 +4,7 @@ import random
 # Create game window
 
 tk = Tk()
-tk.title('Game')
+tk.title('Arkanoid')
 tk.resizable(0,0) # size window
 tk.wm_attributes('-topmost',1)
 canvas = Canvas(tk,width=500, height=400,highlightthickness=0)
@@ -92,6 +92,19 @@ class Score:
     def hit(self):
         self.score += 1
         self.canvas.itemconfig(self.id, text = self.score)
-        
 
+# and finnaly we just need create game settings
 
+score = Score(canvas,'green')
+paddle = Paddle(canvas,'White')
+ball = Ball(canvas,paddle,score,'red')
+while not ball.hit_bottom:
+    if paddle.started == True:
+        ball.draw()
+        paddle.draw()
+    tk.update_idletasks()
+    tk.update()
+    time.sleep(0.01)
+time.sleep(3)
+
+# Duble WoooOHooooo))))))))))))))))
